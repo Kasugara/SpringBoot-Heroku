@@ -1,1 +1,0 @@
-web: java -jar build/libs/spring-boot-security-postgresql-master-1.0.jar
