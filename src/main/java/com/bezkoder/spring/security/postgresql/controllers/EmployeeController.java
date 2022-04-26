@@ -19,7 +19,7 @@ import org.springframework.data.domain.Sort.*;
 import java.util.*;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RequestMapping("/emp")
 
 public class EmployeeController {

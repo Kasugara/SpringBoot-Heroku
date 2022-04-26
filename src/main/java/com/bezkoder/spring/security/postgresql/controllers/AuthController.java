@@ -32,7 +32,7 @@ import com.bezkoder.spring.security.postgresql.repository.UserRepository;
 import com.bezkoder.spring.security.postgresql.security.jwt.JwtUtils;
 import com.bezkoder.spring.security.postgresql.security.services.UserDetailsImpl;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
