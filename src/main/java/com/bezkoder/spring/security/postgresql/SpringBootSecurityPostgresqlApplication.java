@@ -1,10 +1,15 @@
 package com.bezkoder.spring.security.postgresql;
 
+import com.bezkoder.spring.security.postgresql.models.Role;
+import com.bezkoder.spring.security.postgresql.repository.RoleRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -12,10 +17,13 @@ import org.springframework.web.filter.CorsFilter;
 import java.util.Arrays;
 
 @SpringBootApplication
-public class  SpringBootSecurityPostgresqlApplication extends SpringBootServletInitializer {
+public class  SpringBootSecurityPostgresqlApplication extends SpringBootServletInitializer implements CommandLineRunner {
+
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 
 	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder){
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
 		return builder.sources(SpringBootSecurityPostgresqlApplication.class);
 	}
 
@@ -23,13 +31,14 @@ public class  SpringBootSecurityPostgresqlApplication extends SpringBootServletI
 		SpringApplication.run(SpringBootSecurityPostgresqlApplication.class, args);
 	}
 
+
 	@Bean
 	public CorsFilter corsFilter() {
 		CorsConfiguration corsConfiguration = new CorsConfiguration();
 		corsConfiguration.setAllowCredentials(true);
 		corsConfiguration.setAllowedOrigins(Arrays.asList(
 				"http://localhost:4200",
-				"https://mr-realty-database-fe.herokuapp.com/"));
+				"https://mr-realty-database-fe.herokuapp.com"));
 		corsConfiguration.setAllowedHeaders(Arrays.asList("Origin", "Access-Control-Allow-Origin", "Content-Type",
 				"Accept", "Authorization", "Origin, Accept", "X-Requested-With",
 				"Access-Control-Request-Method", "Access-Control-Request-Headers"));
@@ -41,4 +50,16 @@ public class  SpringBootSecurityPostgresqlApplication extends SpringBootServletI
 		return new CorsFilter(urlBasedCorsConfigurationSource);
 	}
 
+
+	@Override
+	public void run(String... args) throws Exception {
+		String sql = "INSERT INTO roles (name) VALUES("
+				+ "'ROLE_USER' "
+				+ "'ROLE_MODERATOR'"
+				+ "'ROLE_ADMIN')";
+		int rows = jdbcTemplate.update(sql);
+		if (rows > 0) {
+			System.out.println("A new row has been inserted.");
+		}
+	}
 }
