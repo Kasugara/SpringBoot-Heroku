@@ -17,10 +17,10 @@ import org.springframework.web.filter.CorsFilter;
 import java.util.Arrays;
 
 @SpringBootApplication
-public class  SpringBootSecurityPostgresqlApplication extends SpringBootServletInitializer implements CommandLineRunner {
+public class  SpringBootSecurityPostgresqlApplication extends SpringBootServletInitializer {
 
-	@Autowired
-	private JdbcTemplate jdbcTemplate;
+//	@Autowired
+//	private JdbcTemplate jdbcTemplate;
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
@@ -51,15 +51,13 @@ public class  SpringBootSecurityPostgresqlApplication extends SpringBootServletI
 	}
 
 
-	@Override
-	public void run(String... args) throws Exception {
-		String sql = "INSERT INTO roles (name) VALUES("
-				+ "'ROLE_USER' "
-				+ "'ROLE_MODERATOR'"
-				+ "'ROLE_ADMIN')";
-		int rows = jdbcTemplate.update(sql);
-		if (rows > 0) {
-			System.out.println("A new row has been inserted.");
-		}
-	}
+//	@Override
+//	public void run(String... args) throws Exception {
+//		String sql =
+//
+//		int rows = jdbcTemplate.update(sql);
+//		if (rows > 0) {
+//			System.out.println("A new row has been inserted.");
+//	}
+//}
 }
