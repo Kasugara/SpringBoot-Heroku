@@ -1,6 +1,5 @@
 package com.bezkoder.spring.security.postgresql;
 
-
 import com.bezkoder.spring.security.postgresql.models.ERole;
 import com.bezkoder.spring.security.postgresql.models.Role;
 import com.bezkoder.spring.security.postgresql.repository.RoleRepository;
@@ -22,9 +21,6 @@ public class RoleAddDBOperation implements CommandLineRunner {
                 new Role(ERole.ROLE_MODERATOR),
                 new Role(ERole.ROLE_ADMIN)
                 )
-
         );
-
-
     }
 }
