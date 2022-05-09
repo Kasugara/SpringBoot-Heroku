@@ -36,7 +36,7 @@ public class  SpringBootSecurityPostgresqlApplication extends SpringBootServletI
 		corsConfiguration.setAllowCredentials(true);
 		corsConfiguration.setAllowedOrigins(Arrays.asList(
 				"http://localhost:4200",
-				"https://mr-realty-database-fe.herokuapp.com"));
+				"https://mr-realty-dbe-fe.herokuapp.com"));
 		corsConfiguration.setAllowedHeaders(Arrays.asList("Origin", "Access-Control-Allow-Origin", "Content-Type",
 				"Accept", "Authorization", "Origin, Accept", "X-Requested-With",
 				"Access-Control-Request-Method", "Access-Control-Request-Headers"));
