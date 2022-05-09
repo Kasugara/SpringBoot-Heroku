@@ -19,8 +19,6 @@ import java.util.Arrays;
 @SpringBootApplication
 public class  SpringBootSecurityPostgresqlApplication extends SpringBootServletInitializer {
 
-//	@Autowired
-//	private JdbcTemplate jdbcTemplate;
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
@@ -51,13 +49,5 @@ public class  SpringBootSecurityPostgresqlApplication extends SpringBootServletI
 	}
 
 
-//	@Override
-//	public void run(String... args) throws Exception {
-//		String sql =
-//
-//		int rows = jdbcTemplate.update(sql);
-//		if (rows > 0) {
-//			System.out.println("A new row has been inserted.");
-//	}
-//}
+
 }
